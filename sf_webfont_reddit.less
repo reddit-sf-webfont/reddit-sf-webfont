@@ -1,0 +1,78 @@
+/* Apply the SF font to everything, except code blocks and RES icons */
+*:not(.res-icon):not(code) {
+	font-family: -apple-system, BlinkMacSystemFont, "SF Text", sans-serif !important;
+}
+
+/* Use SF Display instead for headers */
+h1, h2, h3, h4, h5 {
+	font-family: -apple-system, BlinkMacSystemFont, "SF Display", sans-serif;
+}
+
+/* Apply the SF Mono font to code blocks (unavailable as a system font, so will always be the webfont) */
+code {
+	font-family: "SF Mono";
+	font-size: 90%; // The code block type seems a little too big, so a slight font size reduction is added
+}
+
+/* Many subreddits use pseduo-elements with content for text, let's make sure to style those */
+*:not(.icon):before {
+	font-family: -apple-system, BlinkMacSystemFont, "SF Text", sans-serif !important;
+}
+
+/* That last bit breaks a couple RES icons placed in pseduo-elements, this fixes them */
+.res-tabmenu-button a:before, .res-icon:before, .res-icon:after, .res-filterline-preamble:before, #RESAllOptionsSpan::after, .optionContainer.advanced .optionTitle::before {
+	font-family: Batch !important;
+}
+
+/* Webfonts */
+
+.font-face('SF Mono'; 'sf/sf-mono_light'; 300);
+.font-face('SF Mono'; 'sf/sf-mono_light-italic'; 300; italic);
+.font-face('SF Mono'; 'sf/sf-mono_regular'; 400);
+.font-face('SF Mono'; 'sf/sf-mono_regular-italic'; 400; italic);
+.font-face('SF Mono'; 'sf/sf-mono_medium'; 500);
+.font-face('SF Mono'; 'sf/sf-mono_medium-italic'; 500; italic);
+.font-face('SF Mono'; 'sf/sf-mono_semibold'; 600);
+.font-face('SF Mono'; 'sf/sf-mono_semibold-italic'; 600; italic);
+.font-face('SF Mono'; 'sf/sf-mono_bold'; 700);
+.font-face('SF Mono'; 'sf/sf-mono_bold-italic'; 700; italic);
+.font-face('SF Mono'; 'sf/sf-mono_heavy'; 800);
+.font-face('SF Mono'; 'sf/sf-mono_heavy-italic'; 800; italic);
+
+.font-face('SF Display'; 'sf/sf-pro-display_ultralight'; 100);
+.font-face('SF Display'; 'sf/sf-pro-display_thin'; 200);
+.font-face('SF Display'; 'sf/sf-pro-display_light'; 300);
+.font-face('SF Display'; 'sf/sf-pro-display_regular'; 400);
+.font-face('SF Display'; 'sf/sf-pro-display_medium'; 500);
+.font-face('SF Display'; 'sf/sf-pro-display_semibold'; 600);
+.font-face('SF Display'; 'sf/sf-pro-display_bold'; 700);
+.font-face('SF Display'; 'sf/sf-pro-display_heavy'; 800);
+.font-face('SF Display'; 'sf/sf-pro-display_black'; 900);
+
+.font-face('SF Text'; 'sf/sf-pro-text_ultralight'; 100);
+.font-face('SF Text'; 'sf/sf-pro-text_ultralight-italic'; 100; italic);
+.font-face('SF Text'; 'sf/sf-pro-text_thin'; 200);
+.font-face('SF Text'; 'sf/sf-pro-text_thin-italic'; 200; italic);
+.font-face('SF Text'; 'sf/sf-pro-text_light'; 300);
+.font-face('SF Text'; 'sf/sf-pro-text_light-italic'; 300; italic);
+.font-face('SF Text'; 'sf/sf-pro-text_regular'; 400);
+.font-face('SF Text'; 'sf/sf-pro-text_regular-italic'; 400; italic);
+.font-face('SF Text'; 'sf/sf-pro-text_medium'; 500);
+.font-face('SF Text'; 'sf/sf-pro-text_medium-italic'; 500; italic);
+.font-face('SF Text'; 'sf/sf-pro-text_semibold'; 600);
+.font-face('SF Text'; 'sf/sf-pro-text_semibold-italic'; 600; italic);
+.font-face('SF Text'; 'sf/sf-pro-text_bold'; 700);
+.font-face('SF Text'; 'sf/sf-pro-text_bold-italic'; 700; italic);
+.font-face('SF Text'; 'sf/sf-pro-text_heavy'; 800);
+.font-face('SF Text'; 'sf/sf-pro-text_heavy-italic'; 800; italic);
+.font-face('SF Text'; 'sf/sf-pro-text_black'; 900);
+.font-face('SF Text'; 'sf/sf-pro-text_black-italic'; 900; italic);
+
+.font-face(@fontname; @fontfile; @fontweight:normal; @fontstyle:normal) {
+  @font-face {
+	font-family: "@{fontname}";
+	src: url('@{fontfile}.woff2') format('woff2'), url('@{fontfile}.woff') format('woff');
+	font-weight: @fontweight;
+	font-style: @fontstyle;
+  }
+}
